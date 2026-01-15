@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "text2image"
   spec.version       = Text2image::VERSION
   spec.authors       = ["Rheehose (Rhee Creative)"]
-  spec.email         = ["hslcrb@gmail.com"] # Updated to user preferred handle
+  spec.email         = ["rheehose@rheehose.com"]
 
   spec.summary       = "A Ruby library to convert text to images with automatic system font detection."
   spec.description   = "text2image allows you to easily transform text into black-and-white images using the best available system fonts. Ideal for quick image generation from text data."
