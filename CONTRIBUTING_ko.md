@@ -29,7 +29,7 @@ Thank you for your interest in contributing to `text2image`! To contribute, plea
 To share your development environment:
 
 ```bash
-git clone https://github.com/rheehose/text2image.git
+git clone https://github.com/hslcrb/rupack_text2image.git
 cd text2image
 bin/setup
 ```
@@ -40,7 +40,7 @@ Everyone interacting in the text2image project's codebases, issue trackers, chat
 
 ## Author
 
-- **Rheehose (Rhee Creative)** - *Initial work* - [rheehose](https://github.com/rheehose)
+- **Rheehose (Rhee Creative)** - *Initial work* - [hslcrb](https://github.com/hslcrb)
 
 ## License
 

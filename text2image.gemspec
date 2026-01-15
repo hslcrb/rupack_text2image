@@ -6,11 +6,11 @@ Gem::Specification.new do |spec|
   spec.name          = "text2image"
   spec.version       = Text2image::VERSION
   spec.authors       = ["Rheehose (Rhee Creative)"]
-  spec.email         = ["rheehose@example.com"]
+  spec.email         = ["hslcrb@gmail.com"] # Updated to user preferred handle
 
   spec.summary       = "A Ruby library to convert text to images with automatic system font detection."
   spec.description   = "text2image allows you to easily transform text into black-and-white images using the best available system fonts. Ideal for quick image generation from text data."
-  spec.homepage      = "https://github.com/rheehose/text2image"
+  spec.homepage      = "https://github.com/hslcrb/rupack_text2image"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
 
