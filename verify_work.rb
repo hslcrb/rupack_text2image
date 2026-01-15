@@ -7,29 +7,29 @@ begin
   font_path = Text2image.find_font
   puts "탐지된 시스템 폰트 경로: #{font_path}"
   
-  # 2. 이미지 생성 테스트 (스마트 여백 기능 확인)
-  output_file = "test_padded_result.png"
-  padding_value = 50
+  # 2. 이미지 생성 테스트 (다양한 포맷 및 옵션 확인)
+  formats = ["png", "jpg", "webp"]
   
-  puts "이미지 생성 중 (여백: #{padding_value}px)..."
-  Text2image.convert("Ruby Text2Image\nSmart Padding Test", 
-    output: output_file,
-    font_size: 40,
-    padding: padding_value,
-    background: "white",
-    foreground: "black"
-  )
-  
-  if File.exist?(output_file)
-    puts "✅ 성공! 이미지가 생성되었습니다: #{File.expand_path(output_file)}"
+  formats.each do |fmt|
+    output_file = "test_result.#{fmt}"
+    puts "이미지 생성 중 (#{fmt} 포맷)..."
+    Text2image.convert("Ruby Text2Image v1.3\nFormat: #{fmt.upcase}", 
+      output: output_file,
+      font_size: 35,
+      padding: 20,
+      background: (fmt == "webp" ? "#E0F7FA" : "white"),
+      foreground: (fmt == "webp" ? "#006064" : "black")
+    )
     
-    # 3. 실제 이미지 크기 확인 (여백이 잘 들어갔는지 간접 확인)
-    image = MiniMagick::Image.open(output_file)
-    puts "생성된 이미지 크기: #{image.width}x#{image.height}"
-    puts "테스트 완료!"
-  else
-    puts "❌ 실패: 이미지가 생성되지 않았습니다."
+    if File.exist?(output_file)
+      image = MiniMagick::Image.open(output_file)
+      puts "✅ 성공! #{fmt.upcase} 생성됨: #{image.width}x#{image.height}"
+    else
+      puts "❌ 실패: #{fmt.upcase} 생성 실패"
+    end
   end
+  
+  puts "모든 포맷 테스트 완료!"
 
 rescue => e
   puts "❌ 오류 발생: #{e.message}"
