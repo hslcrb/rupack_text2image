@@ -15,13 +15,23 @@ module Text2image
     end
 
     def render(output_path = nil)
-      image = MiniMagick::Image.create("png", false) do |c|
-        c.background @background
-        c.fill @foreground
-        c.font @font if @font
-        c.pointsize @font_size
-        c.label @text
-      end
+      require 'tempfile'
+      # Use MiniMagick::Tool::Convert to handle 'label:' syntax correctly
+      convert = MiniMagick::Tool::Convert.new
+      convert.background @background
+      convert.fill @foreground
+      convert.font @font if @font
+      convert.pointsize @font_size
+      convert << "label:#{@text}"
+      
+      temp = Tempfile.new(['text2image', '.png'])
+      temp_path = temp.path
+      temp.close
+      
+      convert << temp_path
+      convert.call
+
+      image = MiniMagick::Image.open(temp_path)
 
       if output_path
         image.write(output_path)
