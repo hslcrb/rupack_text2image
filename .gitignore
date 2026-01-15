@@ -1,0 +1,29 @@
+*.gem
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# TODO: If you are using rspec, code coverage, or any other tool, add their 
+# files/directories here.
+
+# Configuration
+.env
+
+# Dependencies
+/vendor/bundle
+/bundle/
+/bin/
+.bundle/
+
+# Gemfile.lock
+Gemfile.lock
