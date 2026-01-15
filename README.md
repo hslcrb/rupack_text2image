@@ -4,10 +4,10 @@
 
 ## Features
 
-- **Text to Image**: Convert any text string into a PNG/JPG image.
-- **Auto Font Detection**: Automatically finds the best available system font using `fontconfig`.
+- **Multi-format Support**: Convert text to `png`, `jpg`, `bmp`, or `webp` images.
 - **Smart Padding**: Calculates the bounding box of the text and adds uniform padding on all four sides.
-- **Customizable**: Options for font size, background/foreground colors, and padding width.
+- **Auto Font Detection**: Automatically finds the best available system font using `fontconfig`.
+- **Customizable**: Options for font size, specific font paths, background/foreground colors, and padding width.
 
 ## Requirements
 
@@ -48,13 +48,14 @@ require 'text2image'
 # Save text to an image file (default 10px padding)
 Text2image.convert("Hello, World!", output: "hello.png")
 
-# With custom options including padding
+# With custom options including padding and format
 Text2image.convert("Ruby is Awesome", 
-  output: "ruby.png",
+  output: "ruby.webp",
   font_size: 48,
   padding: 30,
-  background: "white",
-  foreground: "black"
+  background: "#f0f0f0",
+  foreground: "blue",
+  format: "webp"
 )
 ```
 

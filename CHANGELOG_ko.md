@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-01-15
+
+### Added
+- **Multi-format Support**: Support for `png`, `jpg`/`jpeg`, `bmp`, and `webp`.
+- **Customizable Background & Font**: Enhanced options to override default background and system font.
+- **Improved Extension Detection**: Automatically detects output format from the file extension.
+
 ## [1.0.0] - 2026-01-15
 
 ### Added

@@ -4,7 +4,7 @@ require 'mini_magick'
 
 module Text2image
   class Converter
-    attr_accessor :text, :font, :font_size, :background, :foreground, :padding
+    attr_accessor :text, :font, :font_size, :background, :foreground, :padding, :format
 
     def initialize(text, options = {})
       @text = text
@@ -13,16 +13,18 @@ module Text2image
       @background = options[:background] || "white"
       @foreground = options[:foreground] || "black"
       @padding = options[:padding] || 10
+      @format = options[:format] || "png"
     end
 
     def render(output_path = nil)
       require 'tempfile'
       
-      # Step 1: Get text dimensions without padding
-      # We use 'pango' or 'caption' if available for better text handling
-      # But for simplicity and portability, we use 'label' or 'caption' with trim
+      # Determine format from output_path if available, otherwise use @format
+      actual_format = output_path ? File.extname(output_path).delete('.').downcase : @format
+      actual_format = "png" if actual_format.empty?
       
-      temp_raw = Tempfile.new(['text2image_raw', '.png'])
+      # Step 1: Get text dimensions without padding
+      temp_raw = Tempfile.new(['text2image_raw', ".#{actual_format}"])
       raw_path = temp_raw.path
       temp_raw.close
 
@@ -46,7 +48,7 @@ module Text2image
       final_width = width + (@padding * 2)
       final_height = height + (@padding * 2)
 
-      temp_final = Tempfile.new(['text2image_final', '.png'])
+      temp_final = Tempfile.new(['text2image_final', ".#{actual_format}"])
       final_path = temp_final.path
       temp_final.close
 
